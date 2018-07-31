@@ -1,0 +1,22 @@
+     1                                 %line 1+1 example.asm
+     2                                 
+     3                                 [bits 32]
+     4                                 [global _foo]
+     5                                 [extern _puts]
+     6                                 
+     7                                 [section .rodata]
+     8                                 
+     9 00000000 48656C6C6F20776F72-    fmt: db "Hello world from asm", 0
+    10 00000000 6C642066726F6D2061-
+    11 00000000 736D00             
+    12                                 
+    13                                 [section .text]
+    14                                 
+    15                                 _foo:
+    16 00000000 83EC08                  sub esp, 8
+    17 00000003 68[00000000]            push fmt
+    18                                 
+    19 00000008 83C40C                  add esp, 12
+    20 0000000B C3                      ret
+    21                                 
+    22                                 
